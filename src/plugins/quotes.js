@@ -26,28 +26,38 @@ const addQuote = (message) => {
 };
 
 const getUserQuote = (message) => {
+  // todo: better validation
+  if (message.length === 0) {
+    reply(message, "Improper format. Please provide a name to quote from. If you need help, use the help command.");
+  }
+
   // get a quote from a specific user if any exist for them
-  console.log(`'${message.text}'`, message.text.length);
   Quote.find({
-    author: message
+    author: message.text
   }, (err, docs) => {
-    console.log(`err: ${err}`, `\ndocs: ${docs}`);
+    if (err || _.isEmpty(docs)) {
+      return reply(message, `Sorry, no quotes for \`${message.text}\` were found.`)
+    }
+
+    const randomIndex = Math.floor(Math.random() * docs.length);
+    const quote = docs[randomIndex];
+    return reply(message, `\`${quote.quote}\` -${quote.author}`);
   });
 };
 
 const getQuote = (message) => {
-  console.log(`'${message.text}'`, message.text.length);
   if (message.text.length > 0) {
     return getUserQuote(message);
   }
 
   Quote.find({}, (err, docs) => {
-    console.log(`err: ${err}`, `\ndocs: ${docs}`);
-    if (!err) {
-      const randomIndex = Math.floor(Math.random() * docs.length);
-      const quote = docs[randomIndex];
-      return reply(message, `\`${quote.quote}\` -${quote.author}`);
+    if (err || _.isEmpty(docs)) {
+      return reply(message, `Sorry, no quotes for \`${message.text}\` were found.`)
     }
+
+    const randomIndex = Math.floor(Math.random() * docs.length);
+    const quote = docs[randomIndex];
+    return reply(message, `\`${quote.quote}\` -${quote.author}`);
   });
 };
 
