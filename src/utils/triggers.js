@@ -9,7 +9,7 @@ export const checkTriggers = (triggers, message) => {
     if (message.text.indexOf(trigger) === 0) {
       // if the message had more to it, trim out the trigger for clarity in the action
       message.text = message.text.length > trigger.length ? message.text.substr(trigger.length + 1) : message.text;
-      t.action(message);
+      return t.action(message);
     }
   });
 };

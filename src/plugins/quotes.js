@@ -2,6 +2,7 @@ import _ from "lodash";
 
 import slack from "../slack";
 import Quote from "../models/quote";
+import { reply } from "../utils/message";
 
 const addQuote = (message) => {
   console.log(`'${message.text}'`);
@@ -24,8 +25,7 @@ const getUserQuote = (message) => {
 
 const getQuote = (message) => {
   // get a random quote
-  const channel = slack.getChannelGroupOrDMByID(message.channel);
-  channel.send("test quote");
+  reply(message, "test quote");
 };
 
 console.log(slack);
