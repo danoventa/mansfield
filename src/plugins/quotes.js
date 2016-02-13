@@ -28,23 +28,22 @@ const getQuote = (message) => {
   reply(message, "test quote");
 };
 
-console.log(slack);
 const triggers = [
   {
     trigger: `add quote`,
     action: addQuote,
     title: "Add Quote",
-    help: `Add a quote to the list by saying "${slack.self && slack.self.name} add quote \`[QUOTE]\` -name`
+    help: `Add a quote to the list by saying "$BOTNAME add quote \`[QUOTE]\` -name`
   }, {
     trigger: `quote person`, // see if you can make it just "quote "
     action: getUserQuote,
     title: "Quote person",
-    help: `Request a quote from a particular source by saying "${slack.self && slack.self.name} quote [NAME]`
+    help: `Request a quote from a particular source by saying "$BOTNAME quote [NAME]`
   }, {
     trigger: "quote",
     action: getQuote,
     title: "Random Quote",
-    help: `Request a random quote by saying "${slack.self && slack.self.name} quote`
+    help: `Request a random quote by saying "$BOTNAME quote`
   }
 ];
 

@@ -10,7 +10,6 @@ mongoose.connect('mongodb://localhost/my_database');
 // load all our plugins into the slack object we imported
 _.each(plugins, (triggers) => {
   slack.on("message", (message) => {
-    //console.log(message);
-    checkTriggers(triggers, message)
+    checkTriggers(slack, triggers, message)
   });
 });
