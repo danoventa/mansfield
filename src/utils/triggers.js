@@ -5,8 +5,8 @@ export const checkTriggers = (slack, triggers, message) => {
   _.each(triggers, (t) => {
     const trigger = `${slack.self.name} ${t.trigger}`;
     if (message.text.indexOf(trigger) === 0) {
-      // if the message had more to it, trim out the trigger for clarity in the action
-      message.text = message.text.length > trigger.length ? message.text.substr(trigger.length + 1) : message.text;
+      // trim out the trigger for clarity in the action
+      message.text = message.text.substr(trigger.length + 1);
       return t.action(message, slack);
     }
   });
