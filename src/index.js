@@ -1,13 +1,13 @@
 import slack from "./slack";
-import mongoose from "mongoose";
 import _ from "lodash";
 
 import * as plugins from "./plugins";
 import { checkTriggers } from "./utils/triggers";
+import mongoose from "mongoose";
 
 mongoose.connect('mongodb://localhost/my_database');
 
-// now that we have initialized our slack object, load all our plugins into the bot
+// load all our plugins into the slack object we imported
 _.each(plugins, (triggers) => {
   slack.on("message", (message) => {
     //console.log(message);

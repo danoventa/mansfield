@@ -1,13 +1,16 @@
-import mongoose from "mongoose";
 import _ from "lodash";
 
 import slack from "../slack";
 import Quote from "../models/quote";
 
 const addQuote = (message) => {
-  console.log(message);
+  console.log(`'${message.text}'`);
+  const quote = Quote({
+    quote: message.text
+  });
+  console.log(quote);
+  quote.save();
   // first get author
-
   // now get the quote itself
 
   // now append a new Quote object to our DB
