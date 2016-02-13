@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "bot": "babel index.js -d lib && node lib/index.js"
+    "bot": "babel src/index.js -d lib && node lib/index.js"
   },
   "author": "Paul Stahmer",
   "license": "ISC",
   "dependencies": {
+    "lodash": "^4.3.0",
     "slack-client": "^1.5.1"
   },
   "devDependencies": {

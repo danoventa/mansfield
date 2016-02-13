@@ -1,4 +1,7 @@
 import Slack from "slack-client";
+import _ from "lodash";
+
+import * as plugins from "./plugins";
 
 const slackToken = "xoxb-21249912663-suwrlsa6J7i5llfbhw7aHert";
 const autoReconnect = true; // Automatically reconnect after an error response from Slack.
@@ -7,15 +10,18 @@ const autoMark = true; // Automatically mark each message as read after it is pr
 const slack = new Slack(slackToken, autoReconnect, autoMark);
 
 slack.on("open", () => {
-    console.log("Connected to #{slack.team.name} as @#{slack.self.name}");
+  console.log("Connected to #{slack.team.name} as @#{slack.self.name}");
 });
 
 slack.on("message", (message) => {
-    console.log(message);
 });
 
 slack.on("error", (err) => {
-    console.error("Error", err);
 });
 
 slack.login();
+
+// now that we have initialized our slack object, load all our plugins into the bot
+_.each(plugin, (p) => {
+  p(slack);
+});
