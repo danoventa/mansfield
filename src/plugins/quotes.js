@@ -28,10 +28,24 @@ const getQuote = (message) => {
   channel.send("test quote");
 };
 
+console.log(slack);
 const triggers = [
-  { trigger: `add quote`, action: addQuote },
-  { trigger: `quote @`, action: getUserQuote }, // todo: this trigger will be annoying for users
-  { trigger: "quote", action: getQuote }
+  {
+    trigger: `add quote`,
+    action: addQuote,
+    title: "Add Quote",
+    help: `Add a quote to the list by saying "${slack.self && slack.self.name} add quote \`[QUOTE]\` -name`
+  }, {
+    trigger: `quote person`, // see if you can make it just "quote "
+    action: getUserQuote,
+    title: "Quote person",
+    help: `Request a quote from a particular source by saying "${slack.self && slack.self.name} quote [NAME]`
+  }, {
+    trigger: "quote",
+    action: getQuote,
+    title: "Random Quote",
+    help: `Request a random quote by saying "${slack.self && slack.self.name} quote`
+  }
 ];
 
 export default triggers;

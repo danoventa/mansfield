@@ -11,6 +11,6 @@ mongoose.connect('mongodb://localhost/my_database');
 _.each(plugins, (triggers) => {
   slack.on("message", (message) => {
     //console.log(message);
-    checkTriggers(slack, triggers, message)
+    checkTriggers(triggers, message)
   });
 });
