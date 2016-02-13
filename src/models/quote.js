@@ -10,4 +10,4 @@ const Quote = new Schema({
 
 const model = mongoose.model("Quote", Quote);
 
-module.exports = model;
+export default model;

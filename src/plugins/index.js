@@ -1,4 +1,5 @@
 import quotes from "./quotes";
 import help from "./help";
+import calendar from "./calendar";
 
-export { quotes, help };
+export { quotes, help, calendar };

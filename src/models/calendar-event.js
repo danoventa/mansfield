@@ -2,12 +2,12 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 
-const CalendarPerson = new Schema({
+const CalendarEvent = new Schema({
   id: ObjectId,
   name: String,
-  email: Array
+  date: Date
 });
 
-const model = mongoose.model("CalendarPerson", CalendarPerson);
+const model = mongoose.model("CalendarEvent", CalendarEvent);
 
 export default model;

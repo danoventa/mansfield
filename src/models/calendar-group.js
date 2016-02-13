@@ -4,10 +4,10 @@ const ObjectId = Schema.ObjectId;
 
 const CalendarGroup = new Schema({
   id: ObjectId,
-  groupName: String,
-  groupMembers: Array
+  name: String,
+  members: Array
 });
 
 const model = mongoose.model("CalendarGroup", CalendarGroup);
 
-module.exports = model;
+export default model;
