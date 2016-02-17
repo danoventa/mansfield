@@ -1,7 +1,7 @@
 // dummy file used to make an importable instance of slack
 import Slack from "slack-client";
 
-const slackToken = "xoxb-21249912663-suwrlsa6J7i5llfbhw7aHert";
+const slackToken = "xoxb-21641460357-2lceMgvGyeHylou1gErzP9UO";
 const autoReconnect = true; // Automatically reconnect after an error response from Slack.
 const autoMark = true; // Automatically mark each message as read after it is processed.
 
